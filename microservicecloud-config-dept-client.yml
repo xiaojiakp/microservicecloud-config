@@ -6,80 +6,82 @@ spring:
 server:
   port: 8001
 
-mybatis:
-  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatisÅäÖÃÎÄ¼şËùÔÚÂ·¾¶
-  type-aliases-package: com.atguigu.springcloud.entities    # ËùÓĞEntity±ğÃûÀàËùÔÚ°ü
-  mapper-locations:
-    - classpath:mybatis/mapper/**/*.xml                       # mapperÓ³ÉäÎÄ¼ş
-
 spring:
   profiles: dev
   application:
     name: microservicecloud-config-dept-client
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource            # µ±Ç°Êı¾İÔ´²Ù×÷ÀàĞÍ
-    driver-class-name: org.gjt.mm.mysql.Driver              # mysqlÇı¶¯°ü
-    url: jdbc:mysql://localhost:3306/cloudDB01?serverTimezone=UTC              # Êı¾İ¿âÃû³Æ
+    type: com.alibaba.druid.pool.DruidDataSource            # å½“å‰æ•°æ®æºæ“ä½œç±»å‹
+    driver-class-name: org.gjt.mm.mysql.Driver              # mysqlé©±åŠ¨åŒ…
+    url: jdbc:mysql://localhost:3306/cloudDB01?serverTimezone=UTC              # æ•°æ®åº“åç§°
     username: root
     password: root
     dbcp2:
-      min-idle: 5                                           # Êı¾İ¿âÁ¬½Ó³ØµÄ×îĞ¡Î¬³ÖÁ¬½ÓÊı
-      initial-size: 5                                       # ³õÊ¼»¯Á¬½ÓÊı
-      max-total: 5                                          # ×î´óÁ¬½ÓÊı
-      max-wait-millis: 200                                  # µÈ´ıÁ¬½Ó»ñÈ¡µÄ×î´ó³¬Ê±Ê±¼ä
+      min-idle: 5                                           # æ•°æ®åº“è¿æ¥æ± çš„æœ€å°ç»´æŒè¿æ¥æ•°
+      initial-size: 5                                       # åˆå§‹åŒ–è¿æ¥æ•°
+      max-total: 5                                          # æœ€å¤§è¿æ¥æ•°
+      max-wait-millis: 200                                  # ç­‰å¾…è¿æ¥è·å–çš„æœ€å¤§è¶…æ—¶æ—¶é—´
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatisé…ç½®æ–‡ä»¶æ‰€åœ¨è·¯å¾„
+  type-aliases-package: com.atguigu.springcloud.entities    # æ‰€æœ‰Entityåˆ«åç±»æ‰€åœ¨åŒ…
+  mapper-locations:
+    - classpath:mybatis/mapper/**/*.xml                       # mapperæ˜ å°„æ–‡ä»¶
+
 
 eureka:
-  client: #¿Í»§¶Ë×¢²á½øeureka·şÎñÁĞ±íÄÚ
+  client: #å®¢æˆ·ç«¯æ³¨å†Œè¿›eurekaæœåŠ¡åˆ—è¡¨å†…
     service-url:
       #defaultZone: http://localhost:7001/eureka/
-      # eurekaµÄ¼¯Èº£¬¿ÉÒÔÈÃÕâ¸öÎ¢·şÎñÔÚÏÂÃæÈı¸öeurekaµÄ¼¯ÈºÖĞÍê³É×¢²á.
+      # eurekaçš„é›†ç¾¤ï¼Œå¯ä»¥è®©è¿™ä¸ªå¾®æœåŠ¡åœ¨ä¸‹é¢ä¸‰ä¸ªeurekaçš„é›†ç¾¤ä¸­å®Œæˆæ³¨å†Œ.
       defaultZone: http://eureka7001.com:7001/eureka/
   instance:
-    instance-id: dept-8001.com                 #¿ÉÒÔ¸øÈë×¤µÄ·şÎñ¸ÄÃû×Ö
-    prefer-ip-address: true                                 #·ÃÎÊÂ·¾¶¿ÉÒÔÏÔÊ¾IPµØÖ·
+    instance-id: dept-8001.com                 #å¯ä»¥ç»™å…¥é©»çš„æœåŠ¡æ”¹åå­—
+    prefer-ip-address: true                                 #è®¿é—®è·¯å¾„å¯ä»¥æ˜¾ç¤ºIPåœ°å€
 
-info:                                                       #Î¢·şÎñinfoÄÚÈİÏêÏ¸ĞÅÏ¢µÄÌáÊ¾¡£Èç¹û²»Ğ´Ôò»á±¨ErrorPage
+info:                                                       #å¾®æœåŠ¡infoå†…å®¹è¯¦ç»†ä¿¡æ¯çš„æç¤ºã€‚å¦‚æœä¸å†™åˆ™ä¼šæŠ¥ErrorPage
   app.name: atguigu-microservicecloud
   company.name: www.atguigu.com
   build.artifactId: $project.artifactId$
   build.version: $project.version$
 
+---
   server:
   port: 8001
-
-mybatis:
-  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatisÅäÖÃÎÄ¼şËùÔÚÂ·¾¶
-  type-aliases-package: com.atguigu.springcloud.entities    # ËùÓĞEntity±ğÃûÀàËùÔÚ°ü
-  mapper-locations:
-    - classpath:mybatis/mapper/**/*.xml                       # mapperÓ³ÉäÎÄ¼ş
 
 spring:
   profiles: test
   application:
     name: microservicecloud-config-dept-client
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource            # µ±Ç°Êı¾İÔ´²Ù×÷ÀàĞÍ
-    driver-class-name: org.gjt.mm.mysql.Driver              # mysqlÇı¶¯°ü
-    url: jdbc:mysql://localhost:3306/cloudDB02?serverTimezone=UTC              # Êı¾İ¿âÃû³Æ
+    type: com.alibaba.druid.pool.DruidDataSource            # å½“å‰æ•°æ®æºæ“ä½œç±»å‹
+    driver-class-name: org.gjt.mm.mysql.Driver              # mysqlé©±åŠ¨åŒ…
+    url: jdbc:mysql://localhost:3306/cloudDB02?serverTimezone=UTC              # æ•°æ®åº“åç§°
     username: root
     password: root
     dbcp2:
-      min-idle: 5                                           # Êı¾İ¿âÁ¬½Ó³ØµÄ×îĞ¡Î¬³ÖÁ¬½ÓÊı
-      initial-size: 5                                       # ³õÊ¼»¯Á¬½ÓÊı
-      max-total: 5                                          # ×î´óÁ¬½ÓÊı
-      max-wait-millis: 200                                  # µÈ´ıÁ¬½Ó»ñÈ¡µÄ×î´ó³¬Ê±Ê±¼ä
+      min-idle: 5                                           # æ•°æ®åº“è¿æ¥æ± çš„æœ€å°ç»´æŒè¿æ¥æ•°
+      initial-size: 5                                       # åˆå§‹åŒ–è¿æ¥æ•°
+      max-total: 5                                          # æœ€å¤§è¿æ¥æ•°
+      max-wait-millis: 200                                  # ç­‰å¾…è¿æ¥è·å–çš„æœ€å¤§è¶…æ—¶æ—¶é—´
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatisé…ç½®æ–‡ä»¶æ‰€åœ¨è·¯å¾„
+  type-aliases-package: com.atguigu.springcloud.entities    # æ‰€æœ‰Entityåˆ«åç±»æ‰€åœ¨åŒ…
+  mapper-locations:
+    - classpath:mybatis/mapper/**/*.xml                       # mapperæ˜ å°„æ–‡ä»¶
 
 eureka:
-  client: #¿Í»§¶Ë×¢²á½øeureka·şÎñÁĞ±íÄÚ
+  client: #å®¢æˆ·ç«¯æ³¨å†Œè¿›eurekaæœåŠ¡åˆ—è¡¨å†…
     service-url:
       #defaultZone: http://localhost:7001/eureka/
-      # eurekaµÄ¼¯Èº£¬¿ÉÒÔÈÃÕâ¸öÎ¢·şÎñÔÚÏÂÃæÈı¸öeurekaµÄ¼¯ÈºÖĞÍê³É×¢²á.
+      # eurekaçš„é›†ç¾¤ï¼Œå¯ä»¥è®©è¿™ä¸ªå¾®æœåŠ¡åœ¨ä¸‹é¢ä¸‰ä¸ªeurekaçš„é›†ç¾¤ä¸­å®Œæˆæ³¨å†Œ.
       defaultZone: http://eureka7001.com:7001/eureka/
   instance:
-    instance-id: dept-8001.com                 #¿ÉÒÔ¸øÈë×¤µÄ·şÎñ¸ÄÃû×Ö
-    prefer-ip-address: true                                 #·ÃÎÊÂ·¾¶¿ÉÒÔÏÔÊ¾IPµØÖ·
+    instance-id: dept-8001.com                 #å¯ä»¥ç»™å…¥é©»çš„æœåŠ¡æ”¹åå­—
+    prefer-ip-address: true                                 #è®¿é—®è·¯å¾„å¯ä»¥æ˜¾ç¤ºIPåœ°å€
 
-info:                                                       #Î¢·şÎñinfoÄÚÈİÏêÏ¸ĞÅÏ¢µÄÌáÊ¾¡£Èç¹û²»Ğ´Ôò»á±¨ErrorPage
+info:                                                       #å¾®æœåŠ¡infoå†…å®¹è¯¦ç»†ä¿¡æ¯çš„æç¤ºã€‚å¦‚æœä¸å†™åˆ™ä¼šæŠ¥ErrorPage
   app.name: atguigu-microservicecloud
   company.name: www.atguigu.com
   build.artifactId: $project.artifactId$
