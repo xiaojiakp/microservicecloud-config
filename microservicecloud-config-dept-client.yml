@@ -1,7 +1,7 @@
-spring: 
-    profiles: 
-         active:
-         - dev
+spring:
+  profiles:
+    active:
+    - dev
 ---
 server:
   port: 8001
@@ -46,8 +46,8 @@ info:                                                       #微服务info内容
   build.version: $project.version$
 
 ---
-  server:
-  port: 8001
+server:
+port: 8001
 
 spring:
   profiles: test
@@ -86,4 +86,3 @@ info:                                                       #微服务info内容
   company.name: www.atguigu.com
   build.artifactId: $project.artifactId$
   build.version: $project.version$
-
